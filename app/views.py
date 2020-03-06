@@ -8,9 +8,11 @@ This file creates your application.
 from app import app, db, login_manager
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user, login_required
-from app.forms import LoginForm
+from app.forms import LoginForm,CreateProfile
 from app.models import UserProfile
 from werkzeug.security import check_password_hash
+
+
 
 
 
@@ -29,10 +31,31 @@ def about():
     """Render the website's about page."""
     return render_template('about.html')
 
+@app.route('/profile',methods=['POST', 'GET'])
+def profile():
+    createprofile = CreateProfile()
+    return render_template('addprofile.html',form=createprofile)
+    
+
+@app.route('/profiles')
+@login_required
+def profiles():
+    return render_template('secure_page.html')
+    
+
+@app.route('/profile/<userid>')
+@login_required
+def profileuser():
+    """Render the website's about page."""
+    # return render_template('about.html', name="Mary Jane")
+    return render_template('secure_page.html')
+
+
 @app.route('/secure-page')
 @login_required
 def secure_page():
     return render_template('secure_page.html')
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
