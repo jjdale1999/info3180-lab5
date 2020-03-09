@@ -12,12 +12,12 @@
   {{form.csrf_token}}
   <div>
     {{form.fname.label}} <br>
-    {{form.fname}}
+    {{form.fname}}<br>
   </div>
 
   <div>
     {{form.lname.label}} <br>
-    {{form.lname}}
+    {{form.lname}}<br>
   </div>
   
   <div>
@@ -26,21 +26,22 @@
   </div>
   <div>
     {{form.location.label}} <br>
-    {{form.location}}
+    {{form.location (placeholder="test")}}<br>
   </div>
   <div>
     {{form.gender.label}}<br>
-    {{form.gender}}
+    {{form.gender (placeholder="Select Gender")}}<br>
   </div>
   <div>
     {{form.biography.label}} <br>
-    {{form.biography}}
+    {{form.biography}}<br>
   </div>
 
   <div>
     {{form.photo.label}} <br>
-    {{form.photo}}
+    {{form.photo}}<br>
   </div>
+  <br>
   <button type="submit" name="submit" class="btn btn-primary">Upload file</button>
 </form>
 {% endblock %}

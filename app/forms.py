@@ -6,19 +6,13 @@ from wtforms.validators import DataRequired, Email
 from wtforms import PasswordField
 from wtforms.validators import InputRequired
 class CreateProfile(FlaskForm):
-    fname = StringField('Name', validators=[DataRequired()])
+    fname = StringField('Name', validators=[DataRequired()],render_kw={"placeholder":"test"})
     lname = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    location = StringField('Name', validators=[DataRequired()])
-    gender = SelectField('Gender',choices=[('male','Male'),('female','Female')])
-    biography = TextAreaField('Message',validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()],render_kw={"placeholder":"eg. jdoe@example.com"})
+    location = StringField('Location', validators=[DataRequired()],render_kw={"placeholder":"eg. Kingston,Jamaica"})
+    gender = SelectField('Gender',choices=[('','select a gender'),('male','Male'),('female','Female')],render_kw={"placeholder":"test"})
+    biography = TextAreaField('Biography',validators=[DataRequired()])
     photo = FileField('Photo',validators=[FileRequired(),FileAllowed(['jpg','jpeg','png','Images Only'])])
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired()])
-    password = PasswordField('Password', validators=[InputRequired()])
 
-#     1. Text fields for firstname, lastname, email, location.
-# 2. Select (option) field for gender (whether Male or Female)
-# 3. Textarea field for a short biography.
-# 4. File upload field called photo which accepts the profile image
+
